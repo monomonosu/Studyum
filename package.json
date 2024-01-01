@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
@@ -22,6 +24,14 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.6.6",
+    "@storybook/addon-interactions": "^7.6.6",
+    "@storybook/addon-links": "^7.6.6",
+    "@storybook/addon-onboarding": "^1.0.10",
+    "@storybook/blocks": "^7.6.6",
+    "@storybook/nextjs": "^7.6.6",
+    "@storybook/react": "^7.6.6",
+    "@storybook/test": "^7.6.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -30,9 +40,11 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-storybook": "^0.6.15",
     "husky": "^8.0.0",
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
+    "storybook": "^7.6.6",
     "typescript": "^5"
   },
   "volta": {
