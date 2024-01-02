@@ -1,0 +1,10 @@
+* {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+body {
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}

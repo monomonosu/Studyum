@@ -1,5 +1,9 @@
-import HeaderMain from "@/components/Layouts/HeaderMain";
+import TopBanner from "@/features/top/TopBanner";
 
 export default function Home() {
-  return <HeaderMain />;
+  return (
+    <>
+      <TopBanner />
+    </>
+  );
 }
