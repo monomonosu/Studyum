@@ -12,7 +12,7 @@ export default function TopBanner() {
   `;
 
   const BannerInner = styled.div`
-    width: 768px;
+    max-width: 768px;
     margin: auto;
     text-align: center;
     display: grid;
@@ -21,7 +21,14 @@ export default function TopBanner() {
 
   const CustomWrapper = styled.div`
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
+  `;
+
+  const ButtonWrapper = styled.div`
+    width: calc(50% - 15px);
+    min-width: 200px;
+    margin: 0 auto;
   `;
 
   return (
@@ -34,20 +41,24 @@ export default function TopBanner() {
             気軽にもくもく会を開いてみましょう。
           </p>
           <CustomWrapper>
-            <BasicButton
-              text="LearnerChainについて"
-              color="success"
-              variant="contained"
-              height="50px"
-              className="-shadow"
-            />
-            <BasicButton
-              text="LearnerChainの使い方"
-              color="success"
-              variant="contained"
-              height="50px"
-              className="-shadow"
-            />
+            <ButtonWrapper>
+              <BasicButton
+                text="LearnerChainについて"
+                color="success"
+                variant="contained"
+                height="50px"
+                className="-shadow"
+              />
+            </ButtonWrapper>
+            <ButtonWrapper>
+              <BasicButton
+                text="LearnerChainの使い方"
+                color="success"
+                variant="contained"
+                height="50px"
+                className="-shadow"
+              />
+            </ButtonWrapper>
           </CustomWrapper>
         </BannerInner>
       </BannerContainer>
