@@ -11,7 +11,7 @@ type Story = StoryObj<typeof meta>;
 
 export const NormalButton: Story = {
   args: {
-    text: "LearnerChainについて",
+    text: "Studyumについて",
     color: "success",
     variant: "contained",
     height: "50px",
