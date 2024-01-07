@@ -3,6 +3,10 @@
   word-wrap: break-word;
 }
 
+html {
+  overflow: auto;
+}
+
 body {
   overflow: hidden;
   overflow-wrap: break-word;

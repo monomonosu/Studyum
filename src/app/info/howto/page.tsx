@@ -1,9 +1,9 @@
+import { BaseLayout } from "@/components/Layouts/BaseLayout";
+
+BaseLayout;
+
 const HowToPage = () => {
-  return (
-    <div>
-      <h1>How To</h1>
-    </div>
-  );
+  return <BaseLayout>how to page</BaseLayout>;
 };
 
 export default HowToPage;
