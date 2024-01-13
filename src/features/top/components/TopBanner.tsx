@@ -37,14 +37,14 @@ export default function TopBanner() {
       <BannerContainer>
         <BannerInner>
           <p>
-            LearnerChainは学ぶ人同士を繋ぐプラットフォームです。
+            Studyumは学ぶ人同士を繋ぐプラットフォームです。
             <br />
             気軽にもくもく会を開いてみましょう。
           </p>
           <CustomWrapper>
             <CustomLink href="/info">
               <BasicButton
-                text="LearnerChainについて"
+                text="Studyumについて"
                 color="success"
                 variant="contained"
                 height="50px"
@@ -53,7 +53,7 @@ export default function TopBanner() {
             </CustomLink>
             <CustomLink href="/info/howto">
               <BasicButton
-                text="LearnerChainの使い方"
+                text="Studyumの使い方"
                 color="success"
                 variant="contained"
                 height="50px"

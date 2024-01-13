@@ -1,9 +1,7 @@
+import { BaseLayout } from "@/components/Layouts/BaseLayout";
+
 const InfoPage = () => {
-  return (
-    <div>
-      <h1>Info Page</h1>
-    </div>
-  );
+  return <BaseLayout>info page</BaseLayout>;
 };
 
 export default InfoPage;
