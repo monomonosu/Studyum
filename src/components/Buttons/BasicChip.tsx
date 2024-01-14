@@ -23,12 +23,14 @@ type ChipProps = {
   text: string;
   backGroundColor?: ColorLevel;
   className?: string;
+  size?: "small" | "medium";
 };
 
 export const BasicChip: React.FC<ChipProps> = ({
   text,
   backGroundColor = bgColor.grey,
   className,
+  size = "medium",
 }) => {
   return (
     <CustomClip
@@ -36,6 +38,7 @@ export const BasicChip: React.FC<ChipProps> = ({
       backGroundColor={backGroundColor}
       clickable
       className={className}
+      size={size}
     />
   );
 };
