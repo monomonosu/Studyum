@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { BasicChip } from "@/components/Buttons/BasicChip";
-import { theme } from "@/utils/themes/muiTheme";
 
 const meta = {
   title: "Buttons/BasicChip",
@@ -19,6 +18,20 @@ export const DefaultChip: Story = {
 export const BlueChip: Story = {
   args: {
     text: "Studyumについて",
-    backGroundColor: theme.palette.primary,
+    color: "primary",
+  },
+};
+
+export const GreenChip: Story = {
+  args: {
+    text: "Studyumについて",
+    color: "success",
+  },
+};
+
+export const RedChip: Story = {
+  args: {
+    text: "Studyumについて",
+    color: "error",
   },
 };
