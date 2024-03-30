@@ -62,7 +62,6 @@ export const SessionCard = ({
   width = "230px",
   color = "primary",
 }: SessionCardProps) => {
-  const colorPalette = theme.palette[color];
   const colorDark = theme.palette[color].dark;
   const colorMain = theme.palette[color].light;
   const avatarChar = userName ? userName.slice(0, 1) : "名";
@@ -80,30 +79,13 @@ export const SessionCard = ({
         {tags ? (
           tags?.map((tag, i) =>
             tag ? (
-              <BasicChip
-                key={i}
-                className="-text-white"
-                text={tag}
-                size="small"
-                backGroundColor={colorPalette}
-              />
+              <BasicChip key={i} text={tag} size="small" color={color} />
             ) : (
-              <BasicChip
-                key={i}
-                className="-text-white"
-                text="タグなし"
-                size="small"
-                backGroundColor={colorPalette}
-              />
+              <BasicChip key={i} text="タグなし" size="small" color={color} />
             ),
           )
         ) : (
-          <BasicChip
-            className="-text-white"
-            text="タグなし"
-            size="small"
-            backGroundColor={colorPalette}
-          />
+          <BasicChip text="タグなし" size="small" color={color} />
         )}
       </CustomCardContent>
       <CustomCardContent className="-small">

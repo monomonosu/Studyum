@@ -28,7 +28,11 @@ export default function Home() {
         <CustomContainer>
           <TagContainer>
             {mockData.tags.map((data, index) => (
-              <BasicChip key={index} text={data.tag_name} />
+              <BasicChip
+                key={index}
+                text={data.tag_name}
+                className="-text-black"
+              />
             ))}
           </TagContainer>
           <div>
