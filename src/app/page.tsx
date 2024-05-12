@@ -8,6 +8,8 @@ import { BasicChip } from "@/components/Buttons/BasicChip";
 import { BasicButton } from "@/components/Buttons/BasicButton";
 import { SessionCard } from "@/components/Cards/SessionCard";
 import { PASSIONS_NUM_TO_COLORS } from "@/features/common/constant";
+import { useEffect } from "react";
+import { axiosClient } from "@/utils/libs/axios";
 
 const CustomContainer = styled.div`
   padding: 30px 0;
@@ -29,6 +31,9 @@ const CardContainer = styled.div`
 `;
 
 export default function Home() {
+  useEffect(() => {
+    axiosClient.get("tags").then((res) => console.log(res.data));
+  }, []);
   return (
     <>
       <TopBanner />
