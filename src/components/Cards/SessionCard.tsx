@@ -8,8 +8,8 @@ const CustomCard = styled(Card)<SessionCardStyleProps>`
   width: ${({ width }) => width};
   background: linear-gradient(
     135deg,
-    ${({ colorMain }) => colorMain} 0%,
-    ${({ colorDark }) => colorDark} 100%
+    ${({ color_main }) => color_main} 0%,
+    ${({ color_dark }) => color_dark} 100%
   );
   border-radius: 0px;
   color: white;
@@ -40,8 +40,8 @@ const CustomHr = styled.hr`
 
 type SessionCardStyleProps = {
   width: string;
-  colorDark: string;
-  colorMain: string;
+  color_dark: string;
+  color_main: string;
 };
 
 type SessionCardProps = {
@@ -67,7 +67,7 @@ export const SessionCard = ({
   const avatarChar = userName ? userName.slice(0, 1) : "名";
 
   return (
-    <CustomCard width={width} colorDark={colorDark} colorMain={colorMain}>
+    <CustomCard width={width} color_dark={colorDark} color_main={colorMain}>
       <CustomCardHeader
         //   TODO：アップロードした画像との繋ぎ込み
         avatar={<Avatar aria-label="recipe">{avatarChar}</Avatar>}
