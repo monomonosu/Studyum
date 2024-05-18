@@ -11,7 +11,8 @@
     "lint-staged": "lint-staged",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "tsm": "typed-scss-modules 'src/styles/**/*.module.scss' -w -n none -e default -p.@ src"
+    "tsm": "typed-scss-modules 'src/styles/**/*.module.scss' -w -n none -e default -p.@ src",
+    "tsc": "tsc --noEmit"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
