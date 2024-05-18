@@ -14,7 +14,6 @@ export const NormalButton: Story = {
     text: "Studyumについて",
     color: "success",
     variant: "contained",
-    height: "50px",
     className: "-shadow",
   },
 };

@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 自動生成されたスタイル型定義
+src/**/*.module.scss.d.ts

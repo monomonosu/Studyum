@@ -1,0 +1,26 @@
+.custom_button{
+    color: white;
+  text-transform: none;
+  border-radius: 0;
+  flex-grow: 1;
+}
+
+// TODO:今の所mediumしか使用していないので適宜サイズの変更
+.size {
+    &-small {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+    &-medium {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+    &-large {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+  }
+
+  .-shadow {
+    box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.25);
+  }

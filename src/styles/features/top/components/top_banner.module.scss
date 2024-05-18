@@ -1,0 +1,25 @@
+.banner_container {
+    width: 100%;
+    background: 'f5f5f5';
+    padding: 30px;
+}
+
+.banner_inner {
+    max-width: 768px;
+    margin: auto;
+    text-align: center;
+    display: grid;
+    row-gap: 20px;
+}
+
+.custom_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.custom_link{
+    width: calc(50% - 15px);
+    min-width: 200px;
+    margin: 0 auto;
+}

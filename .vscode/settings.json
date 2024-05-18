@@ -1,5 +1,10 @@
 {
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/*.module.scss.d.ts": true
+      },
     "cSpell.words": [
+        "clsx",
         "nextjs",
         "studyum"
     ]
