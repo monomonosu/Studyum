@@ -10,7 +10,8 @@
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "tsm": "typed-scss-modules 'src/styles/**/*.module.scss' -w -n none -e default -p.@ src"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
@@ -26,7 +27,8 @@
     "axios": "^1.6.8",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sass": "^1.77.2"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.6",
@@ -50,6 +52,7 @@
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
     "storybook": "^7.6.6",
+    "typed-scss-modules": "^8.0.1",
     "typescript": "^5"
   },
   "volta": {
