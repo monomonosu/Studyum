@@ -53,7 +53,6 @@ export default function Home() {
               color="success"
               variant="contained"
               text="セッションを募集する"
-              height="50px"
               width="100%"
               className="-shadow"
             />

@@ -1,33 +1,30 @@
-"use client";
-
 import React from "react";
-import styled from "@emotion/styled";
 import { Button } from "@mui/material";
+import clsx from "clsx";
+import style from "@/styles/components/buttons/basic_button.module.scss";
 
-const CustomButton = styled(Button)<ButtonStyleProps>`
-  color: white;
-  text-transform: none;
-  border-radius: 0;
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
-  flex-grow: 1;
-  &.-shadow {
-    box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.25);
+type SizeType = "small" | "medium" | "large";
+
+const getSize = (size?: SizeType) => {
+  switch (size) {
+    case "small":
+      return style["size-small"];
+    case "medium":
+      return style["size-medium"];
+    case "large":
+      return style["size-large"];
+    default:
+      return style["size-medium"];
   }
-`;
-
-type ButtonStyleProps = {
-  width?: string;
-  height?: string;
 };
 
 type ButtonProps = {
   text: string;
   color?: "primary" | "success" | "error";
   variant?: "outlined" | "contained";
+  size?: "small" | "medium" | "large";
   width?: string;
-  height?: string;
-  className?: string;
+  className?: "-shadow" | null;
   onClick?: () => void;
 };
 
@@ -35,21 +32,25 @@ export const BasicButton: React.FC<ButtonProps> = ({
   text,
   color,
   variant,
+  size = "medium",
   width = "100%",
-  height,
-  className,
+  className = null,
   onClick,
 }) => {
   return (
-    <CustomButton
+    <Button
       color={color}
       variant={variant}
-      width={width}
-      height={height}
-      className={className}
+      size={size}
+      className={clsx(
+        style.custom_button,
+        getSize(size),
+        className ? style[className] : null,
+      )}
       onClick={onClick}
+      style={{ width: width }}
     >
       {text}
-    </CustomButton>
+    </Button>
   );
 };

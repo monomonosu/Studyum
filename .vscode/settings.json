@@ -4,6 +4,7 @@
         "**/*.module.scss.d.ts": true
       },
     "cSpell.words": [
+        "clsx",
         "nextjs",
         "studyum"
     ]
