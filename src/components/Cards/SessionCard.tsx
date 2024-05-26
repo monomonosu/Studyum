@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "@emotion/styled";
 import { Card, CardHeader, Avatar, CardContent } from "@mui/material";
 import { BasicChip } from "@/components/Buttons/BasicChip";

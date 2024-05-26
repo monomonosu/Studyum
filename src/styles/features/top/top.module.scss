@@ -1,0 +1,18 @@
+.custom_container {
+    padding: 30px 0;
+    display: grid;
+     row-gap: 30px;
+}
+
+.tag_container {
+    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 1;
+}
+
+.card_container {
+    display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+} 

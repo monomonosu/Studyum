@@ -1,53 +1,45 @@
-"use client";
-
 import TopBanner from "@/features/top/components/TopBanner";
 import { BaseLayout } from "@/components/Layouts/BaseLayout";
-import styled from "@emotion/styled";
-import { mockData } from "@/features/top/mockData";
 import { BasicChip } from "@/components/Buttons/BasicChip";
 import { BasicButton } from "@/components/Buttons/BasicButton";
 import { SessionCard } from "@/components/Cards/SessionCard";
 import { PASSIONS_NUM_TO_COLORS } from "@/features/common/constant";
-import { useEffect } from "react";
-import { axiosClient } from "@/utils/libs/axios";
+import style from "@/styles/features/top/top.module.scss";
 
-const CustomContainer = styled.div`
-  padding: 30px 0;
-  display: grid;
-  row-gap: 30px;
-`;
+type SessionsResponse = {
+  id: number;
+  userName: string;
+  title: string;
+  tags: string[];
+  content: string;
+  passionLevel: number;
+  created_at: string;
+};
 
-const TagContainer = styled.div`
-  gap: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-shrink: 1;
-`;
+type TagsResponse = {
+  tags: string[];
+};
 
-const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 16px;
-`;
+async function getServerSideProps() {
+  const sessionsRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}sessions`);
+  const tagsRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}tags`);
+  const sessionsJson: SessionsResponse[] = await sessionsRes.json();
+  const tagsJson: TagsResponse = await tagsRes.json();
+  return { sessions: sessionsJson, tags: tagsJson };
+}
 
-export default function Home() {
-  useEffect(() => {
-    axiosClient.get("tags").then((res) => console.log(res.data));
-  }, []);
+export default async function Home() {
+  const { sessions, tags } = await getServerSideProps();
   return (
     <>
       <TopBanner />
       <BaseLayout>
-        <CustomContainer>
-          <TagContainer>
-            {mockData.tags.map((data, index) => (
-              <BasicChip
-                key={index}
-                text={data.tag_name}
-                className="-text-black"
-              />
+        <div className={style.custom_container}>
+          <div className={style.tag_container}>
+            {tags.tags.map((data, index) => (
+              <BasicChip key={index} text={data} className="-text-black" />
             ))}
-          </TagContainer>
+          </div>
           <div>
             <BasicButton
               color="success"
@@ -57,8 +49,8 @@ export default function Home() {
               className="-shadow"
             />
           </div>
-          <CardContainer>
-            {mockData.sessionCards.map((data, index) => (
+          <div className={style.card_container}>
+            {sessions.map((data, index) => (
               <SessionCard
                 key={index}
                 userName={data.userName}
@@ -69,8 +61,8 @@ export default function Home() {
                 color={PASSIONS_NUM_TO_COLORS[data.passionLevel]}
               />
             ))}
-          </CardContainer>
-        </CustomContainer>
+          </div>
+        </div>
       </BaseLayout>
     </>
   );

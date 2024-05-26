@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "@emotion/styled";
 import { Chip } from "@mui/material";
 

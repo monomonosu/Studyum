@@ -1,30 +1,57 @@
+"use client";
+
 import React from "react";
+import styled from "@emotion/styled";
 import { Button } from "@mui/material";
-import clsx from "clsx";
-import style from "@/styles/components/buttons/basic_button.module.scss";
 
 type SizeType = "small" | "medium" | "large";
 
-const getSize = (size?: SizeType) => {
-  switch (size) {
-    case "small":
-      return style["size-small"];
-    case "medium":
-      return style["size-medium"];
-    case "large":
-      return style["size-large"];
-    default:
-      return style["size-medium"];
+const getSize = (size: SizeType) => {
+  if (size === "large") {
+    return `
+      padding-top: 16px;
+      padding-bottom: 16px;
+    `;
   }
+
+  if (size === "medium") {
+    return `
+      padding-top: 12px;
+      padding-bottom: 12px;
+    `;
+  }
+
+  return `
+    padding-top: 8px;
+    padding-bottom: 8px;
+  `;
+};
+
+const CustomButton = styled(Button)<ButtonStyleProps>`
+  color: white;
+  text-transform: none;
+  border-radius: 0;
+  ${({ size }) => `${getSize(size)}`}
+  width: ${({ width }) => width};
+  flex-grow: 1;
+  &.-shadow {
+    box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.25);
+  }
+`;
+
+type ButtonStyleProps = {
+  size: SizeType;
+  width?: string;
+  height?: string;
 };
 
 type ButtonProps = {
   text: string;
   color?: "primary" | "success" | "error";
   variant?: "outlined" | "contained";
-  size?: "small" | "medium" | "large";
+  size?: SizeType;
   width?: string;
-  className?: "-shadow" | null;
+  className?: string;
   onClick?: () => void;
 };
 
@@ -34,23 +61,19 @@ export const BasicButton: React.FC<ButtonProps> = ({
   variant,
   size = "medium",
   width = "100%",
-  className = null,
+  className,
   onClick,
 }) => {
   return (
-    <Button
+    <CustomButton
       color={color}
       variant={variant}
       size={size}
-      className={clsx(
-        style.custom_button,
-        getSize(size),
-        className ? style[className] : null,
-      )}
+      width={width}
+      className={className}
       onClick={onClick}
-      style={{ width: width }}
     >
       {text}
-    </Button>
+    </CustomButton>
   );
 };
