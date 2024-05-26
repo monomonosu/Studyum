@@ -1,5 +1,6 @@
 import { BasicChip } from "@/components/Buttons/BasicChip";
 import { BaseLayout } from "@/components/Layouts/BaseLayout";
+import { axiosClient } from "@/utils/libs/axios";
 
 type Repo = {
   id: number;
@@ -12,24 +13,27 @@ type Repo = {
 };
 
 async function getServerSideProps() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}sessions`);
-  const repo: Repo[] = await res.json();
-  return repo;
+  const sessionsData = (await axiosClient.get<Repo[]>("sessions")).data;
+  return sessionsData;
 }
 
 const InfoPage = async () => {
-  const repo = await getServerSideProps();
+  const sessions = await getServerSideProps();
   return (
     <BaseLayout>
-      {repo.map((data) => (
-        <div key={data.id}>
-          <h1>{data.title}</h1>
-          <p>{data.content}</p>
+      {sessions.map((session) => (
+        <div key={session.id}>
+          <h1>{session.title}</h1>
+          <p>{session.content}</p>
         </div>
       ))}
 
-      {repo.map((data) => (
-        <BasicChip key={data.id} text={data.userName} className="-text-black" />
+      {sessions.map((session) => (
+        <BasicChip
+          key={session.id}
+          text={session.userName}
+          className="-text-black"
+        />
       ))}
     </BaseLayout>
   );

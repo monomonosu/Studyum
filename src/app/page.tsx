@@ -5,6 +5,7 @@ import { BasicButton } from "@/components/Buttons/BasicButton";
 import { SessionCard } from "@/components/Cards/SessionCard";
 import { PASSIONS_NUM_TO_COLORS } from "@/features/common/constant";
 import style from "@/styles/features/top/top.module.scss";
+import { axiosClient } from "@/utils/libs/axios";
 
 type SessionsResponse = {
   id: number;
@@ -21,11 +22,10 @@ type TagsResponse = {
 };
 
 async function getServerSideProps() {
-  const sessionsRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}sessions`);
-  const tagsRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}tags`);
-  const sessionsJson: SessionsResponse[] = await sessionsRes.json();
-  const tagsJson: TagsResponse = await tagsRes.json();
-  return { sessions: sessionsJson, tags: tagsJson };
+  const sessionsData = (await axiosClient.get<SessionsResponse[]>("sessions"))
+    .data;
+  const tagsData = (await axiosClient.get<TagsResponse>("tags")).data;
+  return { sessions: sessionsData, tags: tagsData };
 }
 
 export default async function Home() {
@@ -36,8 +36,8 @@ export default async function Home() {
       <BaseLayout>
         <div className={style.custom_container}>
           <div className={style.tag_container}>
-            {tags.tags.map((data, index) => (
-              <BasicChip key={index} text={data} className="-text-black" />
+            {tags.tags.map((tag, index) => (
+              <BasicChip key={index} text={tag} className="-text-black" />
             ))}
           </div>
           <div>
@@ -50,15 +50,15 @@ export default async function Home() {
             />
           </div>
           <div className={style.card_container}>
-            {sessions.map((data, index) => (
+            {sessions.map((session, index) => (
               <SessionCard
                 key={index}
-                userName={data.userName}
-                title={data.title}
-                tags={data.tags}
-                content={data.content}
+                userName={session.userName}
+                title={session.title}
+                tags={session.tags}
+                content={session.content}
                 width="100%"
-                color={PASSIONS_NUM_TO_COLORS[data.passionLevel]}
+                color={PASSIONS_NUM_TO_COLORS[session.passionLevel]}
               />
             ))}
           </div>
