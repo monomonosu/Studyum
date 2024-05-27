@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "stylelint": "stylelint 'src/**/*.{css,scss}' --fix",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "storybook": "storybook dev -p 6006",
@@ -54,6 +55,10 @@
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
     "storybook": "^7.6.6",
+    "stylelint": "16.6.0",
+    "stylelint-config-recess-order": "5.0.1",
+    "stylelint-config-standard": "36.0.0",
+    "stylelint-scss": "^6.3.0",
     "typed-scss-modules": "^8.0.1",
     "typescript": "^5"
   },
