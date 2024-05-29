@@ -9,20 +9,21 @@ import { axiosClient } from '@/utils/libs/axios';
 
 type SessionsResponse = {
   id: number;
-  userName: string;
+  user_name: string;
   title: string;
   tags: string[];
   content: string;
-  passionLevel: number;
+  passion_level: number;
   created_at: string;
-};
+}[];
 
 type TagsResponse = {
-  tags: string[];
-};
+  id: number;
+  tag_name: string;
+}[];
 
 async function getServerSideProps() {
-  const sessionsData = (await axiosClient.get<SessionsResponse[]>('sessions')).data;
+  const sessionsData = (await axiosClient.get<SessionsResponse>('sessions')).data;
   const tagsData = (await axiosClient.get<TagsResponse>('tags')).data;
   return { sessions: sessionsData, tags: tagsData };
 }
@@ -35,8 +36,8 @@ export default async function Home() {
       <BaseLayout>
         <div className={style['custom-container']}>
           <div className={style['tag-container']}>
-            {tags.tags.map((tag, index) => (
-              <BasicChip key={index} text={tag} className='-text-black' />
+            {tags.map((tag) => (
+              <BasicChip key={tag.id} text={tag.tag_name} className='-text-black' />
             ))}
           </div>
           <div>
@@ -52,12 +53,12 @@ export default async function Home() {
             {sessions.map((session, index) => (
               <SessionCard
                 key={index}
-                userName={session.userName}
+                userName={session.user_name}
                 title={session.title}
                 tags={session.tags}
                 content={session.content}
                 width='100%'
-                color={PASSIONS_NUM_TO_COLORS[session.passionLevel]}
+                color={PASSIONS_NUM_TO_COLORS[session.passion_level]}
               />
             ))}
           </div>
