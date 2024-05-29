@@ -1,19 +1,19 @@
-import { BasicChip } from "@/components/Buttons/BasicChip";
-import { BaseLayout } from "@/components/Layouts/BaseLayout";
-import { axiosClient } from "@/utils/libs/axios";
+import { BasicChip } from '@/components/Buttons/BasicChip';
+import { BaseLayout } from '@/components/Layouts/BaseLayout';
+import { axiosClient } from '@/utils/libs/axios';
 
-type Repo = {
+type SessionsResponse = {
   id: number;
-  userName: string;
+  user_name: string;
   title: string;
   tags: string[];
   content: string;
-  passionLevel: number;
+  passion_level: number;
   created_at: string;
-};
+}[];
 
 async function getServerSideProps() {
-  const sessionsData = (await axiosClient.get<Repo[]>("sessions")).data;
+  const sessionsData = (await axiosClient.get<SessionsResponse>('sessions')).data;
   return sessionsData;
 }
 
@@ -29,11 +29,7 @@ const InfoPage = async () => {
       ))}
 
       {sessions.map((session) => (
-        <BasicChip
-          key={session.id}
-          text={session.userName}
-          className="-text-black"
-        />
+        <BasicChip key={session.id} text={session.user_name} className='-text-black' />
       ))}
     </BaseLayout>
   );
