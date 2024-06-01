@@ -1,9 +1,9 @@
-"use client";
+'use client'
 // デフォルトのページ幅を768pxに狭めるためのレイアウト
 
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
-export const BaseLayout = styled("div")`
+export const BaseLayout = styled('div')`
   max-width: 768px;
   margin: auto;
   min-height: calc(100vh - 70px);
@@ -11,4 +11,4 @@ export const BaseLayout = styled("div")`
   &.-flex {
     display: flex;
   }
-`;
+`

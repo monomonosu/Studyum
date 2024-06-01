@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { BasicButton } from '@/components/Buttons/BasicButton';
-import style from '@/styles/features/top/components/top_banner.module.scss';
+import Link from 'next/link'
+import { BasicButton } from '@/components/Buttons/BasicButton'
+import style from '@/styles/features/top/components/top_banner.module.scss'
 
 export default function TopBanner() {
   return (
@@ -14,14 +14,24 @@ export default function TopBanner() {
           </p>
           <div className={style['custom-wrapper']}>
             <Link className={style['custom-link']} href='/info'>
-              <BasicButton text='Studyumについて' color='success' variant='contained' className='-shadow' />
+              <BasicButton
+                text='Studyumについて'
+                color='success'
+                variant='contained'
+                className='-shadow'
+              />
             </Link>
             <Link className={style['custom-link']} href='/info/howto'>
-              <BasicButton text='Studyumの使い方' color='success' variant='contained' className='-shadow' />
+              <BasicButton
+                text='Studyumの使い方'
+                color='success'
+                variant='contained'
+                className='-shadow'
+              />
             </Link>
           </div>
         </div>
       </div>
     </>
-  );
+  )
 }

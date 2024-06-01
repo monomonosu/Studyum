@@ -1,9 +1,9 @@
-declare module "@mui/material/styles/createPalette" {
+declare module '@mui/material/styles/createPalette' {
   interface CustomPaletteColorOptions {
-    main: string;
-    light?: string;
-    dark?: string;
-    contrastText?: string;
-    background?: string;
+    main: string
+    light?: string
+    dark?: string
+    contrastText?: string
+    background?: string
   }
 }
