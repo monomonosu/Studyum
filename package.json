@@ -2,8 +2,9 @@
   "name": "studyum",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev && npm run chokidar & npm run tsm",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -13,7 +14,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "tsm": "typed-scss-modules 'src/styles/**/*.module.scss' -w -n none -e default -p.@ src",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "chokidar": "node chokidar.js"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
@@ -46,6 +48,7 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^6.16.0",
     "@typescript-eslint/parser": "^6.16.0",
+    "chokidar": "^3.6.0",
     "clsx": "^2.1.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
