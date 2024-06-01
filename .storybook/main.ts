@@ -1,39 +1,38 @@
-import path from "path";
+import path from 'path'
 
 const config = {
-  stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-onboarding",
-    "@storybook/addon-interactions",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-onboarding',
+    '@storybook/addon-interactions'
   ],
   framework: {
-    name: "@storybook/nextjs",
-    options: {},
+    name: '@storybook/nextjs',
+    options: {}
   },
-  staticDirs: ["../public"],
+  staticDirs: ['../public'],
   docs: {
-    autodocs: "tag",
+    autodocs: 'tag'
   },
   webpackFinal: async (config) => {
-    config.resolve.alias["@"] = path.resolve(__dirname, "../src");
+    config.resolve.alias['@'] = path.resolve(__dirname, '../src')
 
     const fileLoaderRule = config.module.rules.find(
-      (rule) =>
-        rule.test && !Array.isArray(rule.test) && rule.test.test(".svg"),
-    );
+      (rule) => rule.test && !Array.isArray(rule.test) && rule.test.test('.svg')
+    )
     if (fileLoaderRule) {
-      fileLoaderRule.exclude = /\.svg$/;
+      fileLoaderRule.exclude = /\.svg$/
     }
 
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
+      use: ['@svgr/webpack']
+    })
 
-    return config;
-  },
-};
+    return config
+  }
+}
 
-module.exports = config;
+module.exports = config

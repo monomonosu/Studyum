@@ -1,14 +1,9 @@
 {
-    "extends": [
-      "stylelint-config-recess-order",
-      "stylelint-config-standard"
-    ],
-    "plugins": [
-      "stylelint-scss"
-    ],
-    "rules": {
-      "scss/comment-no-empty": null,
-      "comment-whitespace-inside": "always",
-      "no-invalid-double-slash-comments": null
-    }
+  "extends": ["stylelint-config-recess-order", "stylelint-config-standard"],
+  "plugins": ["stylelint-scss"],
+  "rules": {
+    "scss/comment-no-empty": null,
+    "comment-whitespace-inside": "always",
+    "no-invalid-double-slash-comments": null
   }
+}

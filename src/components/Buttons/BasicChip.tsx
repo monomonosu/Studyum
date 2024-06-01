@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import styled from "@emotion/styled";
-import { Chip } from "@mui/material";
+import styled from '@emotion/styled'
+import { Chip } from '@mui/material'
 
 const CustomClip = styled(Chip)`
   color: white;
@@ -9,28 +9,15 @@ const CustomClip = styled(Chip)`
   &.-text-black {
     color: black;
   }
-`;
+`
 
 type ChipProps = {
-  text: string;
-  className?: string;
-  size?: "small" | "medium";
-  color?: Color;
-};
+  text: string
+  className?: string
+  size?: 'small' | 'medium'
+  color?: Color
+}
 
-export const BasicChip: React.FC<ChipProps> = ({
-  text,
-  className,
-  size = "medium",
-  color,
-}) => {
-  return (
-    <CustomClip
-      label={text}
-      clickable
-      className={className}
-      size={size}
-      color={color}
-    />
-  );
-};
+export const BasicChip: React.FC<ChipProps> = ({ text, className, size = 'medium', color }) => {
+  return <CustomClip label={text} clickable className={className} size={size} color={color} />
+}

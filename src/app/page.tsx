@@ -1,35 +1,35 @@
-import TopBanner from '@/features/top/components/TopBanner';
-import { BaseLayout } from '@/components/Layouts/BaseLayout';
-import { BasicChip } from '@/components/Buttons/BasicChip';
-import { BasicButton } from '@/components/Buttons/BasicButton';
-import { SessionCard } from '@/components/Cards/SessionCard';
-import { PASSIONS_NUM_TO_COLORS } from '@/features/common/constant';
-import style from '@/styles/features/top/top.module.scss';
-import { axiosClient } from '@/utils/libs/axios';
+import TopBanner from '@/features/top/components/TopBanner'
+import { BaseLayout } from '@/components/Layouts/BaseLayout'
+import { BasicChip } from '@/components/Buttons/BasicChip'
+import { BasicButton } from '@/components/Buttons/BasicButton'
+import { SessionCard } from '@/components/Cards/SessionCard'
+import { PASSIONS_NUM_TO_COLORS } from '@/features/common/constant'
+import style from '@/styles/features/top/top.module.scss'
+import { axiosClient } from '@/utils/libs/axios'
 
 type SessionsResponse = {
-  id: number;
-  user_name: string;
-  title: string;
-  tags: string[];
-  content: string;
-  passion_level: number;
-  created_at: string;
-}[];
+  id: number
+  user_name: string
+  title: string
+  tags: string[]
+  content: string
+  passion_level: number
+  created_at: string
+}[]
 
 type TagsResponse = {
-  id: number;
-  tag_name: string;
-}[];
+  id: number
+  tag_name: string
+}[]
 
 async function getServerSideProps() {
-  const sessionsData = (await axiosClient.get<SessionsResponse>('sessions')).data;
-  const tagsData = (await axiosClient.get<TagsResponse>('tags')).data;
-  return { sessions: sessionsData, tags: tagsData };
+  const sessionsData = (await axiosClient.get<SessionsResponse>('sessions')).data
+  const tagsData = (await axiosClient.get<TagsResponse>('tags')).data
+  return { sessions: sessionsData, tags: tagsData }
 }
 
 export default async function Home() {
-  const { sessions, tags } = await getServerSideProps();
+  const { sessions, tags } = await getServerSideProps()
   return (
     <>
       <TopBanner />
@@ -65,5 +65,5 @@ export default async function Home() {
         </div>
       </BaseLayout>
     </>
-  );
+  )
 }
