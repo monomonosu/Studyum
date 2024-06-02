@@ -1,2 +1,2 @@
 // カラーパターン
-type Color = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
+type Color = 'primary' | 'success' | 'error' | 'info'
