@@ -6,6 +6,7 @@ import { SessionCard } from '@/components/Cards/SessionCard'
 import { PASSIONS_NUM_TO_COLORS } from '@/features/common/constant'
 import style from '@/styles/features/top/top.module.scss'
 import { axiosClient } from '@/utils/libs/axios'
+import Link from 'next/link'
 
 type SessionsResponse = {
   id: number
@@ -51,15 +52,16 @@ export default async function Home() {
           </div>
           <div className={style['card-container']}>
             {sessions.map((session, index) => (
-              <SessionCard
-                key={index}
-                userName={session.user_name}
-                title={session.title}
-                tags={session.tags}
-                content={session.content}
-                width='100%'
-                color={PASSIONS_NUM_TO_COLORS[session.passion_level]}
-              />
+              <Link key={index} href={`/session/${session.id}`}>
+                <SessionCard
+                  userName={session.user_name}
+                  title={session.title}
+                  tags={session.tags}
+                  content={session.content}
+                  width='100%'
+                  color={PASSIONS_NUM_TO_COLORS[session.passion_level]}
+                />
+              </Link>
             ))}
           </div>
         </div>

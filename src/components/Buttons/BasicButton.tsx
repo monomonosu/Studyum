@@ -47,7 +47,7 @@ type ButtonStyleProps = {
 
 type ButtonProps = {
   text: string
-  color?: 'primary' | 'success' | 'error'
+  color?: Color
   variant?: 'outlined' | 'contained'
   size?: SizeType
   width?: string

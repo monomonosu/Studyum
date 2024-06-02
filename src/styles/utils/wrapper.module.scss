@@ -1,0 +1,62 @@
+.gap-wrapper {
+    display: flex;
+    gap: 16px;
+}
+
+.direction {
+    &-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    &-column {
+        flex-direction: column;
+    }
+}
+
+.tow-column-wrapper {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.center-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+}
+
+.gap {
+    &-0 {
+        gap: 0;
+    }
+    &-4 {
+        gap: 4px;
+    }
+    &-8 {
+        gap: 8px;
+    }
+    &-12 {
+        gap: 12px;
+    }
+    &-16 {
+        gap: 16px;
+    }
+    &-20 {
+        gap: 20px;
+    }
+    &-24 {
+        gap: 24px;
+    }
+    &-28 {
+        gap: 28px;
+    }
+    &-32 {
+        gap: 32px;
+    }
+    &-36 {
+        gap:36px;
+    }
+    &-40 {
+        gap: 40px;
+    }
+}

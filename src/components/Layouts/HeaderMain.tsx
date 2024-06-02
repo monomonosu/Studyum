@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import { IconButton } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function HeaderMain() {
   const HeaderContainer = styled.div`
@@ -23,7 +24,9 @@ export default function HeaderMain() {
     <>
       <HeaderContainer>
         <HeaderInner>
-          <Image src='/studyum_logo_256x256.png' width={64} height={64} alt='logo' />
+          <Link href={'/'}>
+            <Image src='/studyum_logo_256x256.png' width={64} height={64} alt='logo' />
+          </Link>
           <IconButton>
             <SearchIcon />
           </IconButton>
