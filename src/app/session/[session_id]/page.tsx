@@ -92,18 +92,18 @@ export default async function SessionDetail({ params }: { params: { session_id: 
           <ContentTitle title='コメント' color={contentColor} />
           <p className={clsx(utils.text, utils['size-large'])}>{session.content}</p>
         </div>
-      </div>
 
-      <div className={clsx(utils['center-wrapper'])}>
-        <Link href='/'>
-          <BasicButton
-            color='info'
-            variant='contained'
-            text='TOPに戻る'
-            width='200px'
-            className='-shadow'
-          />
-        </Link>
+        <div className={clsx(utils['center-wrapper'])}>
+          <Link href='/'>
+            <BasicButton
+              color='info'
+              variant='contained'
+              text='TOPに戻る'
+              width='200px'
+              className='-shadow'
+            />
+          </Link>
+        </div>
       </div>
     </>
   )

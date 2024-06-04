@@ -15,7 +15,7 @@ export const ContentTitle = ({ title, color = 'primary' }: Props) => {
           utils.text,
           utils['size-large'],
           utils['weight-bold'],
-          utils['color-white']
+          color !== 'info' && utils['color-white']
         )}
       >
         {title}

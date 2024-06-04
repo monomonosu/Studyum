@@ -41,7 +41,7 @@ export default async function Home() {
               <BasicChip key={tag.id} text={tag.tag_name} className='-text-black' />
             ))}
           </div>
-          <div>
+          <Link href={'/session/register'}>
             <BasicButton
               color='success'
               variant='contained'
@@ -49,7 +49,7 @@ export default async function Home() {
               width='100%'
               className='-shadow'
             />
-          </div>
+          </Link>
           <div className={style['card-container']}>
             {sessions.map((session, index) => (
               <Link key={index} href={`/session/${session.id}`}>
