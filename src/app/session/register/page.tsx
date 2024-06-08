@@ -1,5 +1,5 @@
 import { BasicButton } from '@/components/Buttons/BasicButton'
-import { TextInput } from '@/components/Forms/Input'
+import { TextInput } from '@/components/Forms/TextInput'
 import { TextArea } from '@/components/Forms/TextArea'
 import { ContentTitle } from '@/components/Uis/ContentTitle'
 import { PageTitle } from '@/components/Uis/PageTitle'
