@@ -1,5 +1,6 @@
 import { BasicButton } from '@/components/Buttons/BasicButton'
 import { TextInput } from '@/components/Forms/Input'
+import { TextArea } from '@/components/Forms/TextArea'
 import { ContentTitle } from '@/components/Uis/ContentTitle'
 import { PageTitle } from '@/components/Uis/PageTitle'
 import utils from '@/styles/utils/index.module.scss'
@@ -76,7 +77,7 @@ export default async function SessionRegister() {
 
         <div className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}>
           <ContentTitle title='コメント' color='info' />
-          <TextInput placeholder='まったり' />
+          <TextArea placeholder='気軽にご参加ください。' rows={4} />
         </div>
 
         <div className={clsx(utils['center-wrapper'])}>
