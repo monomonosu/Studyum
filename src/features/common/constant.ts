@@ -15,3 +15,10 @@ export const PASSIONS = {
   PASSION_MIDDLE: 2,
   PASSION_HIGHT: 3
 }
+
+export const PLATFORM_OPTIONS = [
+  { value: '1', label: 'GoogleMeet' },
+  { value: '2', label: 'Skype' },
+  { value: '3', label: 'Zoom' },
+  { value: '4', label: 'Discord' }
+]

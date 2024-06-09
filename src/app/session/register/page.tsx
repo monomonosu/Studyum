@@ -6,6 +6,8 @@ import { PageTitle } from '@/components/Uis/PageTitle'
 import utils from '@/styles/utils/index.module.scss'
 import clsx from 'clsx'
 import Link from 'next/link'
+import { RadioGroup } from '@/components/Forms/RadioGroup'
+import { PLATFORM_OPTIONS } from '@/features/common/constant'
 
 export default async function SessionRegister() {
   return (
@@ -23,9 +25,6 @@ export default async function SessionRegister() {
             <ContentTitle title='ユーザー名' color='info' />
             <TextInput placeholder='田中　太郎' />
           </div>
-        </div>
-
-        <div className={clsx(utils['tow-column-wrapper'], utils['gap-8'])}>
           <div
             className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
             style={{ width: '100%' }}
@@ -46,15 +45,15 @@ export default async function SessionRegister() {
           </div>
         </div>
 
+        <div
+          className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
+          style={{ width: '100%' }}
+        >
+          <ContentTitle title='プラットフォーム' color='info' />
+          <RadioGroup options={PLATFORM_OPTIONS} />
+        </div>
+
         <div className={clsx(utils['tow-column-wrapper'], utils['gap-8'])}>
-          <div
-            className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
-            style={{ width: '100%' }}
-          >
-            {/* TODO：プラットフォーム用（セレクト？ラジオ？）のコンポーネントに切り替え */}
-            <ContentTitle title='プラットフォーム' color='info' />
-            <TextInput placeholder='GoogleMeet' />
-          </div>
           <div
             className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
             style={{ width: '100%' }}
@@ -62,9 +61,6 @@ export default async function SessionRegister() {
             <ContentTitle title='URL' color='info' />
             <TextInput placeholder='https://meet.google.com/xxx-xxx-xxx' />
           </div>
-        </div>
-
-        <div className={clsx(utils['tow-column-wrapper'], utils['gap-8'])}>
           <div
             className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
             style={{ width: '100%' }}
