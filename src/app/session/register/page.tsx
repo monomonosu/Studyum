@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { RadioGroup } from '@/components/Forms/RadioGroup'
 import { PLATFORM_OPTIONS } from '@/features/common/constant'
 
-export default async function SessionRegister() {
+export default function SessionRegister() {
   return (
     <>
       <PageTitle title='セッション募集' />

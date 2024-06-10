@@ -6,6 +6,7 @@ import { useState } from 'react'
 type OptionProps = {
   value: string
   label: string
+  icon?: JSX.Element
 }
 
 type ElementProps = JSX.IntrinsicElements['input']
@@ -27,7 +28,7 @@ export const RadioGroup = ({ options, ...props }: Props) => {
     <>
       <div className={style.wrapper}>
         <div className={style['radio-wrapper']}>
-          {options.map(({ value, label }) => (
+          {options.map(({ value, label, icon }) => (
             <label
               className={style['radio-group']}
               key={`radio-${value}`}
@@ -41,7 +42,10 @@ export const RadioGroup = ({ options, ...props }: Props) => {
                 onChange={handleChange}
                 checked={selectedValue === value}
               />
-              <span>{label}</span>
+              <span>
+                {icon}
+                <span className={style['radio-inner']}>{label}</span>
+              </span>
             </label>
           ))}
         </div>
