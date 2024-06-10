@@ -10,9 +10,9 @@ export const PASSIONS_NUM_TO_COLORS: { [key: number]: Color } = {
 } as const
 
 export const PASSIONS_NUM_TO_TEXT: { [key: number]: string } = {
-  1: 'わいわい😊',
-  2: 'もくもく😐',
-  3: 'ガチガチ😤'
+  1: '😊わいわい',
+  2: '😐もくもく',
+  3: '😤ガチガチ'
 } as const
 
 export const PASSIONS = {
@@ -20,6 +20,21 @@ export const PASSIONS = {
   PASSION_MIDDLE: 2,
   PASSION_HIGHT: 3
 }
+
+export const PASSION_OPTIONS = [
+  {
+    value: '1',
+    label: '😊わいわい'
+  },
+  {
+    value: '2',
+    label: '😐もくもく'
+  },
+  {
+    value: '3',
+    label: '😤ガチガチ'
+  }
+]
 
 export const PLATFORM_OPTIONS = [
   {

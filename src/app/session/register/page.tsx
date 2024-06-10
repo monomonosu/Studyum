@@ -7,7 +7,7 @@ import utils from '@/styles/utils/index.module.scss'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { RadioGroup } from '@/components/Forms/RadioGroup'
-import { PLATFORM_OPTIONS } from '@/features/common/constant'
+import { PASSION_OPTIONS, PLATFORM_OPTIONS } from '@/features/common/constant'
 
 export default function SessionRegister() {
   return (
@@ -50,7 +50,7 @@ export default function SessionRegister() {
           style={{ width: '100%' }}
         >
           <ContentTitle title='プラットフォーム' color='info' />
-          <RadioGroup options={PLATFORM_OPTIONS} />
+          <RadioGroup name='platform' options={PLATFORM_OPTIONS} />
         </div>
 
         <div className={clsx(utils['tow-column-wrapper'], utils['gap-8'])}>
@@ -61,14 +61,14 @@ export default function SessionRegister() {
             <ContentTitle title='URL' color='info' />
             <TextInput placeholder='https://meet.google.com/xxx-xxx-xxx' />
           </div>
-          <div
-            className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
-            style={{ width: '100%' }}
-          >
-            {/* TODO：タグ用のコンポーネントに切り替え */}
-            <ContentTitle title='ガチ度' color='info' />
-            <TextInput placeholder='まったり' />
-          </div>
+        </div>
+
+        <div
+          className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
+          style={{ width: '100%' }}
+        >
+          <ContentTitle title='ガチ度' color='info' />
+          <RadioGroup name='passion' options={PASSION_OPTIONS} />
         </div>
 
         <div className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}>

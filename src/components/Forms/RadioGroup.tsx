@@ -31,12 +31,12 @@ export const RadioGroup = ({ options, ...props }: Props) => {
           {options.map(({ value, label, icon }) => (
             <label
               className={style['radio-group']}
-              key={`radio-${value}`}
-              htmlFor={`radio-${value}`}
+              key={`${props.name}-${value}`}
+              htmlFor={`${props.name}-${value}`}
             >
               <input
-                id={`radio-${value}`}
-                name={`radio-${value}`}
+                id={`${props.name}-${value}`}
+                name={`${props.name}-${value}`}
                 type='radio'
                 value={value}
                 onChange={handleChange}
