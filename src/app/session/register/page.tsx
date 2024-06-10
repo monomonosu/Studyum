@@ -6,8 +6,10 @@ import { PageTitle } from '@/components/Uis/PageTitle'
 import utils from '@/styles/utils/index.module.scss'
 import clsx from 'clsx'
 import Link from 'next/link'
+import { RadioGroup } from '@/components/Forms/RadioGroup'
+import { PASSION_OPTIONS, PLATFORM_OPTIONS } from '@/features/common/constant'
 
-export default async function SessionRegister() {
+export default function SessionRegister() {
   return (
     <>
       <PageTitle title='セッション募集' />
@@ -23,9 +25,6 @@ export default async function SessionRegister() {
             <ContentTitle title='ユーザー名' color='info' />
             <TextInput placeholder='田中　太郎' />
           </div>
-        </div>
-
-        <div className={clsx(utils['tow-column-wrapper'], utils['gap-8'])}>
           <div
             className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
             style={{ width: '100%' }}
@@ -46,15 +45,15 @@ export default async function SessionRegister() {
           </div>
         </div>
 
+        <div
+          className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
+          style={{ width: '100%' }}
+        >
+          <ContentTitle title='プラットフォーム' color='info' />
+          <RadioGroup name='platform' options={PLATFORM_OPTIONS} />
+        </div>
+
         <div className={clsx(utils['tow-column-wrapper'], utils['gap-8'])}>
-          <div
-            className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
-            style={{ width: '100%' }}
-          >
-            {/* TODO：プラットフォーム用（セレクト？ラジオ？）のコンポーネントに切り替え */}
-            <ContentTitle title='プラットフォーム' color='info' />
-            <TextInput placeholder='GoogleMeet' />
-          </div>
           <div
             className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
             style={{ width: '100%' }}
@@ -64,15 +63,12 @@ export default async function SessionRegister() {
           </div>
         </div>
 
-        <div className={clsx(utils['tow-column-wrapper'], utils['gap-8'])}>
-          <div
-            className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
-            style={{ width: '100%' }}
-          >
-            {/* TODO：タグ用のコンポーネントに切り替え */}
-            <ContentTitle title='ガチ度' color='info' />
-            <TextInput placeholder='まったり' />
-          </div>
+        <div
+          className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
+          style={{ width: '100%' }}
+        >
+          <ContentTitle title='ガチ度' color='info' />
+          <RadioGroup name='passion' options={PASSION_OPTIONS} />
         </div>
 
         <div className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}>
