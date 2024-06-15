@@ -2,6 +2,7 @@
 
 import style from '@/styles/components/forms/radio_group.module.scss'
 import { useState } from 'react'
+import { UseFormRegisterReturn } from 'react-hook-form'
 
 type OptionProps = {
   value: string
@@ -13,9 +14,10 @@ type ElementProps = JSX.IntrinsicElements['input']
 
 type Props = {
   options: OptionProps[]
+  register: UseFormRegisterReturn
 } & ElementProps
 
-export const RadioGroup = ({ options, ...props }: Props) => {
+export const RadioGroup = ({ options, register, ...props }: Props) => {
   const [selectedValue, setSelectedValue] = useState<string>('1')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,12 +33,12 @@ export const RadioGroup = ({ options, ...props }: Props) => {
           {options.map(({ value, label, icon }) => (
             <label
               className={style['radio-group']}
-              key={`${props.name}-${value}`}
-              htmlFor={`${props.name}-${value}`}
+              key={`${register.name}-${value}`}
+              htmlFor={`${register.name}-${value}`}
             >
               <input
-                id={`${props.name}-${value}`}
-                name={`${props.name}-${value}`}
+                id={`${register.name}-${value}`}
+                {...register}
                 type='radio'
                 value={value}
                 onChange={handleChange}
