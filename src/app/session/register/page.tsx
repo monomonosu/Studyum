@@ -1,3 +1,5 @@
+'use client'
+
 import { BasicButton } from '@/components/Buttons/BasicButton'
 import { TextInput } from '@/components/Forms/TextInput'
 import { TextArea } from '@/components/Forms/TextArea'
@@ -9,6 +11,7 @@ import Link from 'next/link'
 import { RadioGroup } from '@/components/Forms/RadioGroup'
 import { PASSION_OPTIONS, PLATFORM_OPTIONS } from '@/features/common/constant'
 import { TagSelect } from '@/components/Forms/TagSelect'
+import { useRegister } from '@/features/register/hooks/useRegister'
 
 /**
  * @todo 仮のタグオプションなので後で削除する
@@ -20,8 +23,10 @@ const dummyTagOptions = [
 ]
 
 export default function SessionRegister() {
+  const { form, onSubmit } = useRegister()
+  console.log(form.formState.errors)
   return (
-    <>
+    <form>
       <PageTitle title='セッション募集' />
       <div
         className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-20'])}
@@ -33,14 +38,14 @@ export default function SessionRegister() {
             style={{ width: '100%' }}
           >
             <ContentTitle title='ユーザー名' color='info' />
-            <TextInput placeholder='田中　太郎' />
+            <TextInput register={form.register('name')} placeholder='田中　太郎' />
           </div>
           <div
             className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
             style={{ width: '100%' }}
           >
             <ContentTitle title='タイトル' color='info' />
-            <TextInput placeholder='もくもく会メンバー募集' />
+            <TextInput register={form.register('title')} placeholder='もくもく会メンバー募集' />
           </div>
         </div>
 
@@ -59,7 +64,11 @@ export default function SessionRegister() {
           style={{ width: '100%' }}
         >
           <ContentTitle title='プラットフォーム' color='info' />
-          <RadioGroup name='platform' options={PLATFORM_OPTIONS} />
+          <RadioGroup
+            register={form.register('platform')}
+            name='platform'
+            options={PLATFORM_OPTIONS}
+          />
         </div>
 
         <div className={clsx(utils['tow-column-wrapper'], utils['gap-8'])}>
@@ -68,7 +77,10 @@ export default function SessionRegister() {
             style={{ width: '100%' }}
           >
             <ContentTitle title='URL' color='info' />
-            <TextInput placeholder='https://meet.google.com/xxx-xxx-xxx' />
+            <TextInput
+              register={form.register('url')}
+              placeholder='https://meet.google.com/xxx-xxx-xxx'
+            />
           </div>
         </div>
 
@@ -77,12 +89,20 @@ export default function SessionRegister() {
           style={{ width: '100%' }}
         >
           <ContentTitle title='ガチ度' color='info' />
-          <RadioGroup name='passion' options={PASSION_OPTIONS} />
+          <RadioGroup
+            register={form.register('passion')}
+            name='passion'
+            options={PASSION_OPTIONS}
+          />
         </div>
 
         <div className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}>
           <ContentTitle title='コメント' color='info' />
-          <TextArea placeholder='気軽にご参加ください。' rows={4} />
+          <TextArea
+            register={form.register('comment')}
+            placeholder='気軽にご参加ください。'
+            rows={4}
+          />
         </div>
 
         <div className={clsx(utils['center-wrapper'])}>
@@ -92,6 +112,7 @@ export default function SessionRegister() {
             text='セッションを募集する'
             width='200px'
             className='-shadow'
+            onClick={form.handleSubmit(onSubmit)}
           />
         </div>
 
@@ -107,6 +128,6 @@ export default function SessionRegister() {
           </Link>
         </div>
       </div>
-    </>
+    </form>
   )
 }

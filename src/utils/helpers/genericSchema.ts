@@ -12,13 +12,6 @@ export const requiredStringSchema = (name: string) => {
 }
 
 /**
- * @name 必須項目文字数制限なし(number型)
- */
-export const requiredNumberSchema = (name: string) => {
-  return z.number().min(1, REQUIRED_TEXT(name))
-}
-
-/**
  * @name 正規表現生成関数
  * @description RegularExpression.tsの正規表現をグループ化
  */
