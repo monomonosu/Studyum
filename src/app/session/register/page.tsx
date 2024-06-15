@@ -8,6 +8,16 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import { RadioGroup } from '@/components/Forms/RadioGroup'
 import { PASSION_OPTIONS, PLATFORM_OPTIONS } from '@/features/common/constant'
+import { TagSelect } from '@/components/Forms/TagSelect'
+
+/**
+ * @todo 仮のタグオプションなので後で削除する
+ */
+const dummyTagOptions = [
+  { value: 1, label: 'もくもく会' },
+  { value: 2, label: '勉強会' },
+  { value: 3, label: 'React' }
+]
 
 export default function SessionRegister() {
   return (
@@ -39,9 +49,8 @@ export default function SessionRegister() {
             className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
             style={{ width: '100%' }}
           >
-            {/* TODO：タグ用のコンポーネントに切り替え */}
             <ContentTitle title='タグ' color='info' />
-            <TextInput placeholder='もくもく会' />
+            <TagSelect options={dummyTagOptions} placeholder='もくもく会' />
           </div>
         </div>
 
