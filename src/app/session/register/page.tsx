@@ -24,7 +24,7 @@ const dummyTagOptions = [
 
 export default function SessionRegister() {
   const { form, onSubmit } = useRegister()
-  console.log(form.formState.errors)
+  const errors = form.formState.errors
   return (
     <form>
       <PageTitle title='セッション募集' />
@@ -38,14 +38,24 @@ export default function SessionRegister() {
             style={{ width: '100%' }}
           >
             <ContentTitle title='ユーザー名' color='info' />
-            <TextInput register={form.register('name')} placeholder='田中　太郎' />
+            <TextInput
+              register={form.register('name')}
+              message={errors.name?.message}
+              error={'name' in errors}
+              placeholder='田中　太郎'
+            />
           </div>
           <div
             className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
             style={{ width: '100%' }}
           >
             <ContentTitle title='タイトル' color='info' />
-            <TextInput register={form.register('title')} placeholder='もくもく会メンバー募集' />
+            <TextInput
+              register={form.register('title')}
+              message={errors.title?.message}
+              error={'title' in errors}
+              placeholder='もくもく会メンバー募集'
+            />
           </div>
         </div>
 
@@ -79,6 +89,8 @@ export default function SessionRegister() {
             <ContentTitle title='URL' color='info' />
             <TextInput
               register={form.register('url')}
+              message={errors.url?.message}
+              error={'url' in errors}
               placeholder='https://meet.google.com/xxx-xxx-xxx'
             />
           </div>
@@ -100,6 +112,8 @@ export default function SessionRegister() {
           <ContentTitle title='コメント' color='info' />
           <TextArea
             register={form.register('comment')}
+            message={errors.comment?.message}
+            error={'comment' in errors}
             placeholder='気軽にご参加ください。'
             rows={4}
           />
