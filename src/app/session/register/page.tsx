@@ -17,9 +17,9 @@ import { useRegister } from '@/features/register/hooks/useRegister'
  * @todo 仮のタグオプションなので後で削除する
  */
 const dummyTagOptions = [
-  { value: 1, label: 'もくもく会' },
-  { value: 2, label: '勉強会' },
-  { value: 3, label: 'React' }
+  { value: '1', label: 'もくもく会' },
+  { value: '2', label: '勉強会' },
+  { value: '3', label: 'React' }
 ]
 
 export default function SessionRegister() {
@@ -65,7 +65,12 @@ export default function SessionRegister() {
             style={{ width: '100%' }}
           >
             <ContentTitle title='タグ' color='info' />
-            <TagSelect options={dummyTagOptions} placeholder='もくもく会' />
+            <TagSelect
+              name='tags'
+              control={form.control}
+              options={dummyTagOptions}
+              placeholder='もくもく会'
+            />
           </div>
         </div>
 
