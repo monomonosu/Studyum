@@ -19,6 +19,7 @@ export const registerFormType = z.object({
   ),
   platform: requiredStringSchema('プラットフォーム'),
   url: z.string().refine(urlFormatSchema.regex, urlFormatSchema.message()),
+  password: z.string(),
   passion: requiredStringSchema('ガチ度'),
   comment: z.string()
 })

@@ -99,6 +99,18 @@ export default function SessionRegister() {
               placeholder='https://meet.google.com/xxx-xxx-xxx'
             />
           </div>
+          <div
+            className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
+            style={{ width: '100%' }}
+          >
+            <ContentTitle title='パスワード' color='info' />
+            <TextInput
+              register={form.register('password')}
+              message={errors.url?.message}
+              error={'password' in errors}
+              placeholder='password'
+            />
+          </div>
         </div>
 
         <div
