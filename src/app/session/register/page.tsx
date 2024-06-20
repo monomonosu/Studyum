@@ -17,9 +17,9 @@ import { useRegister } from '@/features/register/hooks/useRegister'
  * @todo 仮のタグオプションなので後で削除する
  */
 const dummyTagOptions = [
-  { value: 1, label: 'もくもく会' },
-  { value: 2, label: '勉強会' },
-  { value: 3, label: 'React' }
+  { value: '1', label: 'もくもく会' },
+  { value: '2', label: '勉強会' },
+  { value: '3', label: 'React' }
 ]
 
 export default function SessionRegister() {
@@ -65,7 +65,12 @@ export default function SessionRegister() {
             style={{ width: '100%' }}
           >
             <ContentTitle title='タグ' color='info' />
-            <TagSelect options={dummyTagOptions} placeholder='もくもく会' />
+            <TagSelect
+              name='tags'
+              control={form.control}
+              options={dummyTagOptions}
+              placeholder='もくもく会'
+            />
           </div>
         </div>
 
@@ -92,6 +97,18 @@ export default function SessionRegister() {
               message={errors.url?.message}
               error={'url' in errors}
               placeholder='https://meet.google.com/xxx-xxx-xxx'
+            />
+          </div>
+          <div
+            className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
+            style={{ width: '100%' }}
+          >
+            <ContentTitle title='パスワード' color='info' />
+            <TextInput
+              register={form.register('password')}
+              message={errors.url?.message}
+              error={'password' in errors}
+              placeholder='password'
             />
           </div>
         </div>
