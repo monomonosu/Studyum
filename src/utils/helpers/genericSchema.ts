@@ -1,5 +1,9 @@
 import { RegExp_URL } from '@/utils/constants/regularExpression'
-import { URL_FORMAT_TEXT, REQUIRED_TEXT } from '@/utils/constants/validationMassages'
+import {
+  URL_FORMAT_TEXT,
+  REQUIRED_TEXT,
+  MAX_LENGTH_TEXT
+} from '@/utils/constants/validationMassages'
 import { z } from 'zod'
 
 type RegExpList = { [key: string]: RegExp }
@@ -9,6 +13,17 @@ type RegExpList = { [key: string]: RegExp }
  */
 export const requiredStringSchema = (name: string) => {
   return z.string().trim().min(1, REQUIRED_TEXT(name))
+}
+
+/**
+ * @name 最大文字数制限（string型）
+ */
+export const maxStringSchema = (name: string, max: number, isOptional?: boolean) => {
+  if (isOptional) {
+    return z.string().trim().max(max, MAX_LENGTH_TEXT(name, max))
+  }
+
+  return requiredStringSchema(name).max(max, MAX_LENGTH_TEXT(name, max))
 }
 
 /**
