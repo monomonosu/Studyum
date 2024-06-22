@@ -23,7 +23,7 @@ export const registerFormType = z.object({
     .refine((tags) => tags.length < 6, { message: '選択できるタグは５つまでです' }),
   platform: requiredStringSchema('プラットフォーム'),
   url: maxStringSchema('URL', 300, true).refine(urlFormatSchema.regex, urlFormatSchema.message()),
-  password: maxStringSchema('パスワード', 50, true),
+  password: maxStringSchema('パスワード', 50),
   passion: requiredStringSchema('ガチ度'),
   comment: maxStringSchema('コメント', 1000, true)
 })
