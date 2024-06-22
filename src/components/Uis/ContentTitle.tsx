@@ -5,12 +5,13 @@ import clsx from 'clsx'
 interface Props {
   title?: string
   color?: Color
+  required?: boolean
 }
 
-export const ContentTitle = ({ title, color = 'primary' }: Props) => {
+export const ContentTitle = ({ title, color = 'primary', required }: Props) => {
   return (
     <div className={clsx(style.container, style[`bg-color-${color}`])}>
-      <p
+      <span
         className={clsx(
           utils.text,
           utils['size-large'],
@@ -19,7 +20,10 @@ export const ContentTitle = ({ title, color = 'primary' }: Props) => {
         )}
       >
         {title}
-      </p>
+      </span>
+      {required && (
+        <span className={clsx(utils.text, utils['size-small'], utils['color-red'])}>※必須</span>
+      )}
     </div>
   )
 }

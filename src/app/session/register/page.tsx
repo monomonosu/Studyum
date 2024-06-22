@@ -37,7 +37,7 @@ export default function SessionRegister() {
             className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
             style={{ width: '100%' }}
           >
-            <ContentTitle title='ユーザー名' color='info' />
+            <ContentTitle title='ユーザー名' color='info' required />
             <TextInput
               register={form.register('name')}
               message={errors.name?.message}
@@ -49,7 +49,7 @@ export default function SessionRegister() {
             className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
             style={{ width: '100%' }}
           >
-            <ContentTitle title='タイトル' color='info' />
+            <ContentTitle title='タイトル' color='info' required />
             <TextInput
               register={form.register('title')}
               message={errors.title?.message}
