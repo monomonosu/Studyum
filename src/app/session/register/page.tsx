@@ -105,7 +105,7 @@ export default function SessionRegister() {
             className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
             style={{ width: '100%' }}
           >
-            <ContentTitle title='パスワード' color='info' />
+            <ContentTitle title='パスワード' color='info' required />
             <TextInput
               register={form.register('password')}
               message={errors.password?.message}
