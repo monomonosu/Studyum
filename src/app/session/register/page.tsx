@@ -70,6 +70,8 @@ export default function SessionRegister() {
               control={form.control}
               options={dummyTagOptions}
               placeholder='もくもく会'
+              message={errors.tags?.message}
+              error={'tags' in errors}
             />
           </div>
         </div>
@@ -106,7 +108,7 @@ export default function SessionRegister() {
             <ContentTitle title='パスワード' color='info' />
             <TextInput
               register={form.register('password')}
-              message={errors.url?.message}
+              message={errors.password?.message}
               error={'password' in errors}
               placeholder='password'
             />
