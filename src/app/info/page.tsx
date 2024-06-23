@@ -2,6 +2,7 @@ import utils from '@/styles/utils/index.module.scss'
 import clsx from 'clsx'
 import { BasicButton } from '@/components/Buttons/BasicButton'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const InfoPage = async () => {
   return (
@@ -119,20 +120,33 @@ const InfoPage = async () => {
 
         <div className={clsx(utils['center-wrapper'], utils['-mb-64'])}>
           <div className={clsx(utils['gap-wrapper'], utils['direction-row'], utils['gap-40'])}>
-            <BasicButton
-              color='success'
-              variant='contained'
-              text='Studyumの使い方'
-              width='300px'
-              className='-shadow'
-            />
-            <BasicButton
-              color='success'
-              variant='contained'
-              text='もくもく会を開催する！'
-              width='300px'
-              className='-shadow'
-            />
+            <Link href='/info/howto'>
+              <BasicButton
+                color='success'
+                variant='contained'
+                text='Studyumの使い方'
+                width='200px'
+                className='-shadow'
+              />
+            </Link>
+            <Link href='/session/register'>
+              <BasicButton
+                color='success'
+                variant='contained'
+                text='もくもく会を開催する！'
+                width='200px'
+                className='-shadow'
+              />
+            </Link>
+            <Link href='/'>
+              <BasicButton
+                color='success'
+                variant='contained'
+                text='もくもく会に参加する！'
+                width='200px'
+                className='-shadow'
+              />
+            </Link>
           </div>
         </div>
       </div>
