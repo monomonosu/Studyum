@@ -16,6 +16,12 @@
     }
 }
 
+.h1-size {
+    &-large {
+        font-size: 32px;
+    }
+}
+
 .weight {
     &-bold {
         font-weight: 600;
@@ -28,5 +34,17 @@
     }
     &-red {
         color: #e57373;
+    }
+}
+
+.leading {
+    &-tight {
+        line-height: 1.25;
+    }
+    &-normal {
+        line-height: 1.5;
+    }
+    &-loose {
+        line-height: 1.75;
     }
 }
