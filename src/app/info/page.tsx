@@ -1,10 +1,14 @@
+'use client'
+
 import utils from '@/styles/utils/index.module.scss'
 import clsx from 'clsx'
 import { BasicButton } from '@/components/Buttons/BasicButton'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ObserverSection } from '@/components/Uis/ObserverSection'
+import 'animate.css'
 
-const InfoPage = async () => {
+const InfoPage = () => {
   return (
     <div className={utils['base-layout']}>
       <div
@@ -18,7 +22,8 @@ const InfoPage = async () => {
           utils['-mr-16']
         )}
       >
-        <div
+        <ObserverSection
+          animClassName='animate__animated animate__fadeIn'
           className={clsx(
             utils['gap-wrapper'],
             utils['direction-column'],
@@ -52,11 +57,14 @@ const InfoPage = async () => {
               Studyumで、学ぶ楽しさを再発見してみましょう！
             </p>
           </div>
-        </div>
+        </ObserverSection>
 
-        <hr style={{ color: '#f5f5f5' }} />
+        <ObserverSection animClassName='animate__animated animate__fadeIn'>
+          <hr style={{ color: '#f5f5f5' }} />
+        </ObserverSection>
 
-        <div
+        <ObserverSection
+          animClassName='animate__animated animate__fadeIn'
           className={clsx(
             utils['gap-wrapper'],
             utils['direction-column'],
@@ -87,11 +95,14 @@ const InfoPage = async () => {
               誰でも気軽に参加できるので、自分のペースで集中したい時にピッタリのイベントです。もくもく会は、集中して取り組むための最高の時間を提供してくれますよ！
             </p>
           </div>
-        </div>
+        </ObserverSection>
 
-        <hr style={{ color: '#f5f5f5' }} />
+        <ObserverSection animClassName='animate__animated animate__fadeIn'>
+          <hr style={{ color: '#f5f5f5' }} />
+        </ObserverSection>
 
-        <div
+        <ObserverSection
+          animClassName='animate__animated animate__fadeIn'
           className={clsx(
             utils['gap-wrapper'],
             utils['direction-column'],
@@ -116,9 +127,13 @@ const InfoPage = async () => {
               早速使ってみよう！
             </p>
           </div>
-        </div>
+        </ObserverSection>
 
-        <div className={clsx(utils['center-wrapper'], utils['-mb-64'])}>
+        <ObserverSection
+          height='300px'
+          animClassName='animate__animated animate__fadeIn'
+          className={clsx(utils['center-wrapper'], utils['-mb-64'])}
+        >
           <div className={clsx(utils['gap-wrapper'], utils['direction-row'], utils['gap-40'])}>
             <Link href='/info/howto'>
               <BasicButton
@@ -148,7 +163,7 @@ const InfoPage = async () => {
               />
             </Link>
           </div>
-        </div>
+        </ObserverSection>
       </div>
     </div>
   )
