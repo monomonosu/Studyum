@@ -9,28 +9,39 @@ import { axiosClient } from '@/utils/libs/axios'
 import Link from 'next/link'
 
 type SessionsResponse = {
-  id: number
-  user_name: string
-  title: string
-  tags: string[]
-  content: string
-  passion_level: number
-  created_at: string
-}[]
+  items: {
+    id: number
+    user_name: string
+    title: string
+    tags: string[]
+    content: string
+    passion_level: number
+    created_at: string
+  }[]
+  total: number
+  per_page: number
+  current_page: number
+  last_page: number
+}
 
 type TagsResponse = {
   id: number
   tag_name: string
 }[]
 
-async function getServerSideProps() {
-  const sessionsData = (await axiosClient.get<SessionsResponse>('sessions')).data
+async function getServerSideProps(page: number) {
+  const sessionsData = (await axiosClient.get<SessionsResponse>(`sessions?page=${page}`)).data
   const tagsData = (await axiosClient.get<TagsResponse>('tags')).data
-  return { sessions: sessionsData, tags: tagsData }
+  return { sessionsData, tags: tagsData }
 }
 
-export default async function Home() {
-  const { sessions, tags } = await getServerSideProps()
+export default async function Home({
+  searchParams
+}: {
+  searchParams: { [key: string]: string | string[] | undefined }
+}) {
+  const page = searchParams.page ? Number(searchParams.page) : 1
+  const { sessionsData, tags } = await getServerSideProps(page)
   return (
     <>
       <TopBanner />
@@ -51,7 +62,7 @@ export default async function Home() {
             />
           </Link>
           <div className={style['card-container']}>
-            {sessions.map((session, index) => (
+            {sessionsData.items.map((session, index) => (
               <Link key={index} href={`/session/${session.id}`}>
                 <SessionCard
                   userName={session.user_name}

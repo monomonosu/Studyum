@@ -52,6 +52,7 @@ type ButtonProps = {
   size?: SizeType
   width?: string
   className?: string
+  href?: string
   onClick?: () => void
 }
 
@@ -62,8 +63,14 @@ export const BasicButton: React.FC<ButtonProps> = ({
   size = 'medium',
   width = '100%',
   className,
+  href,
   onClick
 }) => {
+  const handleClick = () => {
+    onClick && onClick()
+    href && (window.location.href = href)
+  }
+
   return (
     <CustomButton
       color={color}
@@ -71,7 +78,7 @@ export const BasicButton: React.FC<ButtonProps> = ({
       size={size}
       width={width}
       className={className}
-      onClick={onClick}
+      onClick={() => handleClick()}
     >
       {text}
     </CustomButton>
