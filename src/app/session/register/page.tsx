@@ -7,7 +7,6 @@ import { ContentTitle } from '@/components/Uis/ContentTitle'
 import { PageTitle } from '@/components/Uis/PageTitle'
 import utils from '@/styles/utils/index.module.scss'
 import clsx from 'clsx'
-import Link from 'next/link'
 import { RadioGroup } from '@/components/Forms/RadioGroup'
 import { PASSION_OPTIONS, PLATFORM_OPTIONS } from '@/features/common/constant'
 import { TagSelect } from '@/components/Forms/TagSelect'
@@ -39,9 +38,9 @@ export default function SessionRegister() {
           >
             <ContentTitle title='ユーザー名' color='info' required />
             <TextInput
-              register={form.register('name')}
-              message={errors.name?.message}
-              error={'name' in errors}
+              register={form.register('user_name')}
+              message={errors.user_name?.message}
+              error={'name_name' in errors}
               placeholder='田中　太郎'
             />
           </div>
@@ -121,8 +120,8 @@ export default function SessionRegister() {
         >
           <ContentTitle title='ガチ度' color='info' />
           <RadioGroup
-            register={form.register('passion')}
-            name='passion'
+            register={form.register('passion_level')}
+            name='passion_level'
             options={PASSION_OPTIONS}
           />
         </div>
@@ -130,9 +129,9 @@ export default function SessionRegister() {
         <div className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}>
           <ContentTitle title='コメント' color='info' />
           <TextArea
-            register={form.register('comment')}
-            message={errors.comment?.message}
-            error={'comment' in errors}
+            register={form.register('content')}
+            message={errors.content?.message}
+            error={'content' in errors}
             placeholder='気軽にご参加ください。'
             rows={4}
           />
@@ -150,15 +149,14 @@ export default function SessionRegister() {
         </div>
 
         <div className={clsx(utils['center-wrapper'])}>
-          <Link href='/'>
-            <BasicButton
-              color='info'
-              variant='contained'
-              text='TOPに戻る'
-              width='200px'
-              className='-shadow'
-            />
-          </Link>
+          <BasicButton
+            color='info'
+            variant='contained'
+            text='TOPに戻る'
+            width='200px'
+            className='-shadow'
+            href='/'
+          />
         </div>
       </div>
     </form>
