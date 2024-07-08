@@ -1,6 +1,10 @@
 import { ContentTitle } from '@/components/Uis/ContentTitle'
 import { PageTitle } from '@/components/Uis/PageTitle'
-import { PASSIONS_NUM_TO_COLORS, PASSIONS_NUM_TO_TEXT } from '@/features/common/constant'
+import {
+  PASSIONS_NUM_TO_COLORS,
+  PASSIONS_NUM_TO_TEXT,
+  PLATFORM_NUM_TO_TEXT_ICON
+} from '@/features/common/constant'
 import { axiosClient } from '@/utils/libs/axios'
 import utils from '@/styles/utils/index.module.scss'
 import clsx from 'clsx'
@@ -11,8 +15,8 @@ type SessionResponse = {
   id: number
   title: string
   user_name: string
-  tags: string[]
-  platform: string
+  // tags: string[]
+  platform: number
   url: string
   passion_level: number
   content: string
@@ -52,17 +56,21 @@ export default async function SessionDetail({ params }: { params: { session_id: 
             style={{ width: '100%' }}
           >
             <ContentTitle title='タグ' color={contentColor} />
-            <p className={clsx(utils.text, utils['size-large'])}>{session.tags.join(',')}</p>
+            {/* TODO:タグのリレーションを実施次第繋ぎこみ */}
+            {/* <p className={clsx(utils.text, utils['size-large'])}>{session.tags.join(',')}</p> */}
           </div>
         </div>
 
         <div className={clsx(utils['tow-column-wrapper'], utils['gap-16'])}>
           <div
-            className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
+            className={clsx(utils['gap-wrapper'], utils['direction-row'], utils['gap-12'])}
             style={{ width: '100%' }}
           >
             <ContentTitle title='プラットフォーム' color={contentColor} />
-            <p className={clsx(utils.text, utils['size-large'])}>{session.platform}</p>
+            <span>{PLATFORM_NUM_TO_TEXT_ICON[session.platform].icon}</span>{' '}
+            <span className={clsx(utils.text, utils['size-large'])} style={{ lineHeight: '24px' }}>
+              {PLATFORM_NUM_TO_TEXT_ICON[session.platform].label}
+            </span>
           </div>
           <div
             className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
