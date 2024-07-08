@@ -15,6 +15,13 @@ export const PASSIONS_NUM_TO_TEXT: { [key: number]: string } = {
   3: '😤ガチガチ'
 } as const
 
+export const PLATFORM_NUM_TO_TEXT_ICON: { [key: number]: { icon: JSX.Element; label: string } } = {
+  1: { icon: <GoogleMeet />, label: 'GoogleMeet' },
+  2: { icon: <Skype />, label: 'Skype' },
+  3: { icon: <Zoom />, label: 'Zoom' },
+  4: { icon: <Discord />, label: 'Discord' }
+} as const
+
 export const PASSIONS = {
   PASSION_LOW: 1,
   PASSION_MIDDLE: 2,
