@@ -13,7 +13,7 @@ type SessionsResponse = {
     id: number
     user_name: string
     title: string
-    tags: string[]
+    tags: { id: number; name: string }[]
     content: string
     passion_level: number
     created_at: string

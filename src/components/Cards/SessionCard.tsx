@@ -50,7 +50,7 @@ type SessionCardProps = {
   userName?: string | null
   title?: string | null
   created_at?: Date | string
-  tags?: Array<string> | null
+  tags?: { id: number; name: string }[] | null
   content?: string | null
   width?: string
   color?: Color
@@ -81,7 +81,7 @@ export const SessionCard = ({
         {tags ? (
           tags?.map((tag, i) =>
             tag ? (
-              <BasicChip key={i} text={tag} size='small' color={color} />
+              <BasicChip key={i} text={tag.name} size='small' color={color} />
             ) : (
               <BasicChip key={i} text='タグなし' size='small' color={color} />
             )
