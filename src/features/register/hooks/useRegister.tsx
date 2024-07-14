@@ -35,8 +35,17 @@ export const useRegister = () => {
   }, [tagList])
 
   const onSubmit: SubmitHandler<RegisterFormType> = async (formData) => {
-    console.log(formData)
-    axiosClient.post('sessions/register', formData).then(() => {
+    const formatData = {
+      ...formData,
+      tags: formData.tags.map((tag) => {
+        return {
+          id: Number(tag.value),
+          name: tag.label
+        }
+      })
+    }
+
+    axiosClient.post('sessions/register', formatData).then(() => {
       window.location.href = '/'
     })
   }
