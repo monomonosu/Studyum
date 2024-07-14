@@ -29,7 +29,11 @@ export const RedSessionCard: Story = {
     userName: '田中　ほげ太郎',
     title: 'もくもく会参加メンバー募集',
     content: 'もくもく会参加メンバー募集します。一緒に勉強しましょう！',
-    tags: ['勉強会', 'プログラミング', 'もくもく会'],
+    tags: [
+      { id: 1, name: '勉強会' },
+      { id: 2, name: 'プログラミング' },
+      { id: 3, name: 'もくもく会' }
+    ],
     color: 'error'
   }
 }
