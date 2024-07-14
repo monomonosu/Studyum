@@ -10,12 +10,13 @@ import utils from '@/styles/utils/index.module.scss'
 import clsx from 'clsx'
 import { BasicButton } from '@/components/Buttons/BasicButton'
 import Link from 'next/link'
+import { BasicChip } from '@/components/Buttons/BasicChip'
 
 type SessionResponse = {
   id: number
   title: string
   user_name: string
-  // tags: string[]
+  tags: { id: number; name: string }[]
   platform: number
   url: string
   passion_level: number
@@ -52,12 +53,13 @@ export default async function SessionDetail({ params }: { params: { session_id: 
 
         <div className={clsx(utils['tow-column-wrapper'], utils['gap-16'])}>
           <div
-            className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-12'])}
+            className={clsx(utils['gap-wrapper'], utils['direction-row'], utils['gap-12'])}
             style={{ width: '100%' }}
           >
             <ContentTitle title='タグ' color={contentColor} />
-            {/* TODO:タグのリレーションを実施次第繋ぎこみ */}
-            {/* <p className={clsx(utils.text, utils['size-large'])}>{session.tags.join(',')}</p> */}
+            {session.tags.map((tag) => (
+              <BasicChip key={tag.id} text={tag.name} className='-text-black' />
+            ))}
           </div>
         </div>
 

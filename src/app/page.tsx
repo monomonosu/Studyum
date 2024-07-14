@@ -13,7 +13,7 @@ type SessionsResponse = {
     id: number
     user_name: string
     title: string
-    tags: string[]
+    tags: { id: number; name: string }[]
     content: string
     passion_level: number
     created_at: string
@@ -26,12 +26,12 @@ type SessionsResponse = {
 
 type TagsResponse = {
   id: number
-  tag_name: string
+  name: string
 }[]
 
 async function getServerSideProps(page: number) {
   const sessionsData = (await axiosClient.get<SessionsResponse>(`sessions?page=${page}`)).data
-  const tagsData = (await axiosClient.get<TagsResponse>('tags')).data
+  const tagsData = (await axiosClient.get<TagsResponse>('tags?count=10')).data
   return { sessionsData, tags: tagsData }
 }
 
@@ -49,7 +49,7 @@ export default async function Home({
         <div className={style['custom-container']}>
           <div className={style['tag-container']}>
             {tags.map((tag) => (
-              <BasicChip key={tag.id} text={tag.tag_name} className='-text-black' />
+              <BasicChip key={tag.id} text={tag.name} className='-text-black' />
             ))}
           </div>
           <Link href={'/session/register'}>
