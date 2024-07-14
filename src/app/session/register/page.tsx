@@ -12,17 +12,8 @@ import { PASSION_OPTIONS, PLATFORM_OPTIONS } from '@/features/common/constant'
 import { TagSelect } from '@/components/Forms/TagSelect'
 import { useRegister } from '@/features/register/hooks/useRegister'
 
-/**
- * @todo 仮のタグオプションなので後で削除する
- */
-const dummyTagOptions = [
-  { value: '1', label: 'もくもく会' },
-  { value: '2', label: '勉強会' },
-  { value: '3', label: 'React' }
-]
-
 export default function SessionRegister() {
-  const { form, onSubmit } = useRegister()
+  const { tagOptions, form, onSubmit } = useRegister()
   const errors = form.formState.errors
   return (
     <form>
@@ -67,7 +58,7 @@ export default function SessionRegister() {
             <TagSelect
               name='tags'
               control={form.control}
-              options={dummyTagOptions}
+              options={tagOptions}
               placeholder='もくもく会'
               message={errors.tags?.message}
               error={'tags' in errors}
