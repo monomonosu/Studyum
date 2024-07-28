@@ -1,7 +1,6 @@
 'use client'
 
 import style from '@/styles/components/forms/radio_group.module.scss'
-import { useState } from 'react'
 import { UseFormRegisterReturn } from 'react-hook-form'
 
 type OptionProps = {
@@ -18,14 +17,6 @@ type Props = {
 } & ElementProps
 
 export const RadioGroup = ({ options, register, ...props }: Props) => {
-  const [selectedValue, setSelectedValue] = useState<string>('1')
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(e.target.value)
-    if (props.onChange) {
-      props.onChange(e)
-    }
-  }
   return (
     <>
       <div className={style.wrapper}>
@@ -39,10 +30,9 @@ export const RadioGroup = ({ options, register, ...props }: Props) => {
               <input
                 id={`${register.name}-${value}`}
                 {...register}
+                {...props}
                 type='radio'
                 value={value}
-                onChange={handleChange}
-                checked={selectedValue === value}
               />
               <span>
                 {icon}

@@ -104,6 +104,18 @@ export default async function SessionDetail({ params }: { params: { session_id: 
         </div>
 
         <div className={clsx(utils['center-wrapper'])}>
+          <Link href={`/session/${session.id}/edit`}>
+            <BasicButton
+              color='success'
+              variant='contained'
+              text='セッションを編集する'
+              width='200px'
+              className='-shadow'
+            />
+          </Link>
+        </div>
+
+        <div className={clsx(utils['center-wrapper'])}>
           <Link href='/'>
             <BasicButton
               color='info'

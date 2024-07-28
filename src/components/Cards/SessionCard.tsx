@@ -78,14 +78,8 @@ export const SessionCard = ({
       <CustomHr />
       <CustomCardContent>{title ? title : 'タイトルなし'}</CustomCardContent>
       <CustomCardContent className='-bg-white'>
-        {tags ? (
-          tags?.map((tag, i) =>
-            tag ? (
-              <BasicChip key={i} text={tag.name} size='small' color={color} />
-            ) : (
-              <BasicChip key={i} text='タグなし' size='small' color={color} />
-            )
-          )
+        {tags?.length ? (
+          tags?.map((tag, i) => <BasicChip key={i} text={tag.name} size='small' color={color} />)
         ) : (
           <BasicChip text='タグなし' size='small' color={color} />
         )}
