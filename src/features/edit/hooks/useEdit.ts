@@ -70,9 +70,16 @@ export const useEdit = () => {
     })
   }
 
+  const onDelete = async (formData: EditFormType) => {
+    axiosClient.post(`sessions/delete/${session_id}`, formData).then(() => {
+      window.location.href = '/'
+    })
+  }
+
   return {
     form,
     onSubmit,
+    onDelete,
     tagOptions
   }
 }
