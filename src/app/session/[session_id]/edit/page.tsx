@@ -127,18 +127,7 @@ export default function Edit() {
           />
         </div>
 
-        <div className={clsx(utils['center-wrapper'])}>
-          <BasicButton
-            color='success'
-            variant='contained'
-            text='セッションを編集する'
-            width='200px'
-            className='-shadow'
-            onClick={form.handleSubmit(onSubmit)}
-          />
-        </div>
-
-        <div className={clsx(utils['center-wrapper'])}>
+        <div className={clsx(utils['center-wrapper'], utils['gap-40'])}>
           <BasicButton
             color='error'
             variant='contained'
@@ -146,6 +135,14 @@ export default function Edit() {
             width='200px'
             className='-shadow'
             onClick={form.handleSubmit(onDelete)}
+          />
+          <BasicButton
+            color='success'
+            variant='contained'
+            text='セッションを編集する'
+            width='200px'
+            className='-shadow'
+            onClick={form.handleSubmit(onSubmit)}
           />
         </div>
 
