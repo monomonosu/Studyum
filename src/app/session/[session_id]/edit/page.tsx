@@ -12,7 +12,7 @@ import { TagSelect } from '@/components/Forms/TagSelect'
 import { useEdit } from '@/features/edit/hooks/useEdit'
 
 export default function Edit() {
-  const { form, onSubmit, onDelete, tagOptions } = useEdit()
+  const { form, onSubmit, tagOptions } = useEdit()
   const errors = form.formState.errors
   return (
     <form>
@@ -128,14 +128,6 @@ export default function Edit() {
         </div>
 
         <div className={clsx(utils['center-wrapper'], utils['gap-40'])}>
-          <BasicButton
-            color='error'
-            variant='contained'
-            text='セッションを削除する'
-            width='200px'
-            className='-shadow'
-            onClick={form.handleSubmit(onDelete)}
-          />
           <BasicButton
             color='success'
             variant='contained'
