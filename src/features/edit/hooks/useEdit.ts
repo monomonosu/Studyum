@@ -17,7 +17,7 @@ export const useEdit = () => {
   const { data: sessionDetail } = useSWR(`sessions/${session_id}`, () =>
     getSessionDetail({ id: Number(session_id) })
   )
-  const { data: tagList } = useSWR(`tags`, () => getTags({ count: 10 }))
+  const { data: tagList } = useSWR(`tags`, () => getTags({ count: null }))
 
   const form = useForm<EditFormType>({
     mode: 'onChange',

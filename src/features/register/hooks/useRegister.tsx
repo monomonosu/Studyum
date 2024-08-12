@@ -14,7 +14,7 @@ import useSWR from 'swr'
 
 export const useRegister = () => {
   const { fetcher } = useGetTags()
-  const { data: tagList } = useSWR(`tags`, () => fetcher({ count: 10 }))
+  const { data: tagList } = useSWR(`tags`, () => fetcher({ count: null }))
 
   const form = useForm<RegisterFormType>({
     mode: 'onChange',
