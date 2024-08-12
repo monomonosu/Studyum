@@ -1,4 +1,5 @@
 import { axiosClient } from '@/utils/libs/axios'
+import { stringify } from 'querystring'
 
 type Tag = {
   id: number
@@ -16,7 +17,7 @@ type TagResponse = Tag[]
  */
 export const useGetTags = () => {
   const fetcher = async (request: TagRequest) => {
-    const url = `tags?count=${request.count}`
+    const url = `tags?${stringify(request)}`
     const res = await axiosClient.get<TagResponse>(url)
 
     return res.data
