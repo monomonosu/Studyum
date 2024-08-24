@@ -6,6 +6,7 @@ import {
   registerDefaultValues,
   registerFormType
 } from '@/features/register/hooks/formSchema'
+import { useAxiosLoading } from '@/utils/hooks/useAxiosLoading'
 import { axiosClient } from '@/utils/libs/axios'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMemo } from 'react'
@@ -14,6 +15,7 @@ import useSWR from 'swr'
 
 export const useRegister = () => {
   const { fetcher } = useGetTags()
+  const { isAxiosLoading, setAxiosLoading } = useAxiosLoading()
   const { data: tagList } = useSWR(`tags`, () => fetcher({ count: null }))
 
   const form = useForm<RegisterFormType>({
@@ -35,6 +37,7 @@ export const useRegister = () => {
   }, [tagList])
 
   const onSubmit: SubmitHandler<RegisterFormType> = async (formData) => {
+    setAxiosLoading(true)
     const formatData = {
       ...formData,
       tags: formData.tags.map((tag) => {
@@ -50,5 +53,5 @@ export const useRegister = () => {
     })
   }
 
-  return { form, onSubmit, tagOptions }
+  return { isAxiosLoading, form, onSubmit, tagOptions }
 }

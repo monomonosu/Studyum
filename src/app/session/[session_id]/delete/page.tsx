@@ -10,12 +10,14 @@ import Link from 'next/link'
 import { BasicChip } from '@/components/Buttons/BasicChip'
 import { TextInput } from '@/components/Forms/TextInput'
 import { useDelete } from '@/features/delete/hooks/useDelete'
+import { Loader } from '@/components/Layouts/Loader'
 
 export default function SessionDetail() {
-  const { sessionDetail, form, onSubmit } = useDelete()
+  const { isAxiosLoading, sessionDetail, form, onSubmit } = useDelete()
   const errors = form.formState.errors
   return (
     <>
+      {isAxiosLoading && <Loader />}
       <PageTitle title='セッション削除' />
       <div
         className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-20'])}

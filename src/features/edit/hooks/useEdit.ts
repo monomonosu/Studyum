@@ -1,6 +1,7 @@
 import { useGetSessionDetail } from '@/features/edit/api/getSessionDetail'
 import { editDefaultValues, editFormType, EditFormType } from '@/features/edit/hooks/formSchema'
 import { useGetTags } from '@/features/register/api/getTags'
+import { useAxiosLoading } from '@/utils/hooks/useAxiosLoading'
 import { axiosClient } from '@/utils/libs/axios'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useParams } from 'next/navigation'
@@ -10,6 +11,7 @@ import useSWR from 'swr'
 
 export const useEdit = () => {
   const params = useParams()
+  const { isAxiosLoading, setAxiosLoading } = useAxiosLoading()
   const { fetcher: getSessionDetail } = useGetSessionDetail()
   const { fetcher: getTags } = useGetTags()
 
@@ -55,6 +57,7 @@ export const useEdit = () => {
   }, [tagList])
 
   const onSubmit = async (formData: EditFormType) => {
+    setAxiosLoading(true)
     const formatData = {
       ...formData,
       tags: formData.tags.map((tag) => {
@@ -71,6 +74,7 @@ export const useEdit = () => {
   }
 
   return {
+    isAxiosLoading,
     form,
     onSubmit,
     tagOptions
