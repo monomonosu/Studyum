@@ -10,12 +10,14 @@ import { RadioGroup } from '@/components/Forms/RadioGroup'
 import { PASSION_OPTIONS, PLATFORM_OPTIONS } from '@/features/common/constant'
 import { TagSelect } from '@/components/Forms/TagSelect'
 import { useEdit } from '@/features/edit/hooks/useEdit'
+import { Loader } from '@/components/Layouts/Loader'
 
 export default function Edit() {
-  const { form, onSubmit, tagOptions } = useEdit()
+  const { isAxiosLoading, form, onSubmit, tagOptions } = useEdit()
   const errors = form.formState.errors
   return (
     <form>
+      {isAxiosLoading && <Loader />}
       <PageTitle title='セッション編集' />
       <div
         className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-20'])}

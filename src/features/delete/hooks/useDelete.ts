@@ -4,6 +4,7 @@ import {
   DeleteFormType
 } from '@/features/delete/hooks/formSchema'
 import { useGetSessionDetail } from '@/features/edit/api/getSessionDetail'
+import { useAxiosLoading } from '@/utils/hooks/useAxiosLoading'
 import { axiosClient } from '@/utils/libs/axios'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useParams } from 'next/navigation'
@@ -12,6 +13,7 @@ import useSWR from 'swr'
 
 export const useDelete = () => {
   const params = useParams()
+  const { isAxiosLoading, setAxiosLoading } = useAxiosLoading()
   const { fetcher: getSessionDetail } = useGetSessionDetail()
 
   const { session_id } = params
@@ -27,10 +29,11 @@ export const useDelete = () => {
   })
 
   const onSubmit = async (formData: DeleteFormType) => {
+    setAxiosLoading(true)
     axiosClient.post(`sessions/delete/${session_id}`, formData).then(() => {
       window.location.href = '/'
     })
   }
 
-  return { sessionDetail, form, onSubmit }
+  return { isAxiosLoading, sessionDetail, form, onSubmit }
 }

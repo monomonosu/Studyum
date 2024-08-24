@@ -11,12 +11,14 @@ import { RadioGroup } from '@/components/Forms/RadioGroup'
 import { PASSION_OPTIONS, PLATFORM_OPTIONS } from '@/features/common/constant'
 import { TagSelect } from '@/components/Forms/TagSelect'
 import { useRegister } from '@/features/register/hooks/useRegister'
+import { Loader } from '@/components/Layouts/Loader'
 
 export default function SessionRegister() {
-  const { tagOptions, form, onSubmit } = useRegister()
+  const { isAxiosLoading, tagOptions, form, onSubmit } = useRegister()
   const errors = form.formState.errors
   return (
     <form>
+      {isAxiosLoading && <Loader />}
       <PageTitle title='セッション募集' />
       <div
         className={clsx(utils['gap-wrapper'], utils['direction-column'], utils['gap-20'])}
