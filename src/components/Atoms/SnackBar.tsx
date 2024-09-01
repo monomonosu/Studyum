@@ -1,5 +1,7 @@
 import { SnackbarType } from '@/utils/libs/stores/snackbar'
 import { Alert, Snackbar } from '@mui/material'
+import DoDisturbAltIcon from '@mui/icons-material/DoDisturbAlt'
+import TaskAltIcon from '@mui/icons-material/TaskAlt'
 
 type Props = {
   snackbar: SnackbarType
@@ -19,6 +21,7 @@ export const SnackBar = ({ snackbar, onClose }: Props) => {
       onClose={onClose}
     >
       <Alert
+        icon={status === 200 ? <TaskAltIcon /> : <DoDisturbAltIcon />}
         severity={status === 200 ? 'success' : 'error'}
         variant='filled'
         sx={{ width: '100%' }}
