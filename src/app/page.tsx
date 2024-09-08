@@ -9,6 +9,7 @@ import utils from '@/styles/utils/index.module.scss'
 import { axiosClient } from '@/utils/libs/axios'
 import Link from 'next/link'
 import clsx from 'clsx'
+import { SnackBar } from '@/components/Atoms/SnackBar'
 
 type SessionsResponse = {
   items: {
@@ -43,11 +44,16 @@ export default async function Home({
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
   const page = searchParams.page ? Number(searchParams.page) : 1
+  // スナックバー用のステータス
+  const isSuccess = !!searchParams.success
+  const message = searchParams.message as string
+  const status = (searchParams.status as unknown as number) || 200
   const { sessionsData, tags } = await getServerSideProps(page)
   return (
     <>
       <TopBanner />
       <BaseLayout>
+        <SnackBar isOpen={isSuccess} title={message} status={status} />
         <div className={style['custom-container']}>
           <div className={style['tag-container']}>
             {tags.map((tag) => (
