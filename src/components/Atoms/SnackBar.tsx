@@ -1,24 +1,36 @@
-import { SnackbarType } from '@/utils/libs/stores/snackbar'
-import { Alert, Snackbar } from '@mui/material'
+'use client'
+
+import { Alert, Snackbar, SnackbarCloseReason } from '@mui/material'
 import DoDisturbAltIcon from '@mui/icons-material/DoDisturbAlt'
 import TaskAltIcon from '@mui/icons-material/TaskAlt'
+import { useState } from 'react'
 
 type Props = {
-  snackbar: SnackbarType
-  onClose: () => void
+  isOpen: boolean
+  status: number
+  title: string
 }
 
-export const SnackBar = ({ snackbar, onClose }: Props) => {
-  const { isOpen, status, title } = snackbar
+export const SnackBar = ({ isOpen, title, status }: Props) => {
+  const [open, setOpen] = useState(isOpen)
+
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: SnackbarCloseReason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+
+    setOpen(false)
+  }
+
   return (
     <Snackbar
-      open={isOpen}
+      open={open}
       autoHideDuration={5000}
       anchorOrigin={{
         vertical: 'top',
         horizontal: 'right'
       }}
-      onClose={onClose}
+      onClose={handleClose}
     >
       <Alert
         icon={status === 200 ? <TaskAltIcon /> : <DoDisturbAltIcon />}

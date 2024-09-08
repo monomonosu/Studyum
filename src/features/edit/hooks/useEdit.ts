@@ -68,8 +68,8 @@ export const useEdit = () => {
       })
     }
 
-    axiosClient.put(`sessions/${session_id}`, formatData).then(() => {
-      window.location.href = '/'
+    axiosClient.put(`sessions/${session_id}`, formatData).then((res) => {
+      window.location.href = `/?success=true&message=${res.data.message}&status=${res.status}`
     })
   }
 
