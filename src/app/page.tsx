@@ -47,7 +47,7 @@ export default async function Home({
   // スナックバー用のステータス
   const isSuccess = !!searchParams.success
   const message = searchParams.message as string
-  const status = (searchParams.status as unknown as number) || 200
+  const status = Number(searchParams.status)
   const { sessionsData, tags } = await getServerSideProps(page)
   return (
     <>

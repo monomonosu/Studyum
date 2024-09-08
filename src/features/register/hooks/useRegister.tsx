@@ -48,8 +48,8 @@ export const useRegister = () => {
       })
     }
 
-    axiosClient.post('sessions/register', formatData).then(() => {
-      window.location.href = '/'
+    axiosClient.post('sessions/register', formatData).then((res) => {
+      window.location.href = `/?success=true&message=${res.data.message}&status=${res.status}`
     })
   }
 

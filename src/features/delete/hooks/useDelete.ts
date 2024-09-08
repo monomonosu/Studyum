@@ -30,8 +30,8 @@ export const useDelete = () => {
 
   const onSubmit = async (formData: DeleteFormType) => {
     setAxiosLoading(true)
-    axiosClient.post(`sessions/delete/${session_id}`, formData).then(() => {
-      window.location.href = '/'
+    axiosClient.post(`sessions/delete/${session_id}`, formData).then((res) => {
+      window.location.href = `/?success=true&message=${res.data.message}&status=${res.status}`
     })
   }
 
